@@ -80,15 +80,12 @@ class UsersController < ApplicationController
 
   # does not let a user edit with blank content
   patch '/users/:id' do
-    if !params[:username].empty? && !params[:password].empty?
+
       @user = User.find(params[:id])
       @user.update(username:params[:username], password:params[:password])
 		redirect to "/logout"
 
-    else
-      flash[:message] = "Please don't leave blank content"
-      redirect to "/users/#{params[:id]}/edit"
-    end
+
   end
 
 
