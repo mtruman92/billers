@@ -74,11 +74,11 @@ class BillsController < ApplicationController
       if logged_in? && @bill.user_id == current_user
         @bill.update(params[:bill_name]) # Mass update the bill attributes
         @bill.save
-        redirect "/bills/#{@bill.id}"
+        redirect '/bills/show.html'
       else
         if logged_in?
           #flash[:message] = @user.errors.messages
-          redirect "/bills/#{@bill.id}"
+         redirect "/bills/#{@bill.id}"
         else
           redirect '/login'
         end
