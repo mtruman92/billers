@@ -1,4 +1,40 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Bill Tracker</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<%= url("/css/style.css")%>">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <% if logged_in? %>
+                            <li><a href="/" class="navbar-brand">Bills Homepage</a></li>
+                            <li><a href="/bills/show.html">View Bills</a></li>
+                            <li><a href="/users/<%= current_user.username %>/edit"">My Profile</a></li>
+                            <li><a href="/bills">New Bills</a></li>
+                            <li><a href="/bills/bills">test billing</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        <% else %>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <%= yield %>
+        </div>
+    </body>
+
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -30,3 +66,33 @@
     <![endif]-->
   </body>
 </html>
+
+<!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: black;
+    }
+    </style>
+    </head>
+    <body>
