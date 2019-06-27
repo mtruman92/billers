@@ -60,7 +60,7 @@ class BillsController < ApplicationController
       if @bill.user_id == current_user.id
         erb :'bills/edit_bill'
       else
-        redirect_to_home_page
+        redirect '/login'
       end
     else
       redirect_if_not_logged_in
