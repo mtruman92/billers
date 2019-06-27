@@ -45,7 +45,7 @@
     <td><%= bill.category%></td>
     <td><%= bill.repeat %></td>
     <td><%= bill.paid %></td>
-    <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
+    <td><a href="/bills/<%=bill.id%>/edit">Edit<span class="glyphicon glyphicon-pencil"></span></a></td>
   </tr>
 <% end %>
 </table>

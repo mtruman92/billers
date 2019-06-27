@@ -1,5 +1,23 @@
 class UsersController < ApplicationController
-  #use Sinatra::Flash
+  
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params.require(:user).permit(:username, :password))
+
+    if @user.save
+      redirect_to @user
+    else
+      render :new
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 
    # If not logged_in? Load Signup form, else load user index #
    get '/signup' do

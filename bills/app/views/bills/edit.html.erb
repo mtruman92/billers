@@ -1,1 +1,70 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
+<form action="/bills/<%= @bill.id %>" method="post">
+ 
+  <div class="input-container"> <font color="black">
+Bill Name:  <input class="input-field" type="text" placeholder="Bill Name" id= "billname" name="bill_name">
+  </div>
+
+   <div class="input-container"> <font color="black">
+Bill Amount:  <input class="input-field" type="text" placeholder="Bill Amount" id= "billamount" name="bill_amount">
+  </div>
+
+   <div class="input-container"> <font color="black">
+Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due_date" name="due_date">
+  </div>
+
+
+
+
+  <p>Category: <select id="category" name="category_id" class="form-control">
+      <option>Please Select</option>
+      <option>Auto</option>
+      <option>Cable</option>
+      <option>Cell Phone</option>
+      <option>Childcare</option>
+      <option>Credit Card</option>
+      <option>Education</option>
+      <option>Electric</option>
+      <option>Entertainment</option>
+      <option>Gas</option>
+      <option>Gifts</option>
+      <option>Home</option>
+      <option>Insurance</option>
+      <option>Medical</option>
+      <option>Mortgage</option>
+      <option>Parking</option>
+      <option>Pets</option>
+      <option>Rent</option>
+      <option>Security</option>
+      <option>Tax</option>
+      <option>Telephone</option>
+      <option>Transportation</option>
+      <option>Water</option>
+      <option>Other</option>
+    </select> </p>
+
+<p> Autopay: <label class="switch">
+  <input type="checkbox" name="auto_pay">
+  <span class="slider round"></span>
+</label> </p>
+
+      <p> Repeat:
+
+    <input type="radio" name="repeat" id="radios-0" value="Weekly">
+    <label class="form-check-label" for="radios-0">Weekly</label>
+
+    <input type="radio" name="repeat" id="radios-1" value="Biweekly">
+    <label class="form-check-label" for="radios-1">Biweekly</label>
+
+    <input type="radio" name="repeat" id="radios-2" value="Monthly">
+    <label class="form-check-label" for="radios-2">Montly</label>
+
+    <input type="radio" name="repeat" id="radios-3" value="Never">
+    <label class="form-check-label" for="radios-3">Never</label>
+
+</p>
+
+      Paid: <input type="checkbox" name="paid" id="checkboxes-0" value="Yes"> </p>
+      
+       <input type="submit" value="Update">
+</form>

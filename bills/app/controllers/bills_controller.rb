@@ -54,16 +54,19 @@ class BillsController < ApplicationController
     end
 
     # If logged_in? and bill's user is valid: Find bill by ID, load edit form. Otherwise load bill show page if not correct user. Else: /login #
-    get "/bills/:id/edit" do
-      set_bill
-      if logged_in? && @bill.user_id == current_user.id
-        erb :"/bills/edit.html"
-      elsif logged_in? && @bill.user_id != current_user.id
-        redirect "/bills/#{@bill.id}"
+    get '/bills/:id/edit' do
+    if logged_in?
+      @bill = Bill.find(params[:id])
+      if @bill.user_id == current_user.id
+        erb :'bills/edit_bill'
       else
-        redirect '/login'
+        redirect_to_home_page
       end
+    else
+      redirect_if_not_logged_in
     end
+  end
+
 
     # If logged_in? && bill has a name, update the name + attributes, redirect to that bill page. Else: Reload edit form #
     patch "/bills/:id" do
