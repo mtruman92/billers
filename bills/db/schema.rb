@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20190626190949) do
     t.string   "bill_name"
     t.decimal  "bill_amount"
     t.date     "due_date"
-    t.boolean  "auto_pay"
-    t.text     "category"
-    t.boolean  "repeat"
+  #  t.boolean  "auto_pay"
+  #  t.text     "category"
+  #  t.boolean  "repeat"
     t.boolean  "paid"
     t.integer  "user_id"
     t.datetime "created_at",  null: false

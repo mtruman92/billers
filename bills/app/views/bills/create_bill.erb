@@ -23,7 +23,7 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
   </div>
 
 
-
+<% if false %>
 
   <p>Category: <select id="category" name="category" class="form-control">
       <option>Please Select</option>
@@ -52,6 +52,7 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
       <option>Other</option>
     </select> </p>
 
+
 <p> Autopay: <label class="switch">
   <input type="checkbox" name="auto_pay">
   <span class="slider round"></span>
@@ -72,6 +73,8 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
     <label class="form-check-label" for="radios-3">Never</label>
 
 </p>
+
+<% end %>
 
 <p> Paid: <label class="switch">
   <input type="checkbox" name="paid">

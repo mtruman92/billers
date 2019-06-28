@@ -5,7 +5,7 @@ class BillsController < ApplicationController
     get '/bills' do
       if logged_in? && current_user
         @bills = current_user.bills
-        erb :'/bills/index.html'
+        erb :'/bills/show.html'
       else
         redirect '/login'
       end
@@ -28,9 +28,6 @@ class BillsController < ApplicationController
         @bill = Bill.new(bill_name: params[:bill_name])
         @bill.bill_amount = params[:bill_amount]
         @bill.due_date = params[:due_date]
-        @bill.auto_pay = params[:auto_pay]
-        @bill.category = params[:category]
-        @bill.repeat = params[:repeat]
         @bill.paid = params[:paid]
         @bill.user_id = current_user.id
         @bill.save
@@ -72,12 +69,10 @@ class BillsController < ApplicationController
       @bill = set_bill
       if logged_in? && @bill.user == current_user
         @bill.update(params[:bill]) # Mass update the bill attributes <%= @bill.bill_name%>
-
         redirect '/bills'
 
       else
         if logged_in?
-          #flash[:message] = @user.errors.messages
          redirect "/bills/#{@bill.id}"
         else
           redirect '/login'

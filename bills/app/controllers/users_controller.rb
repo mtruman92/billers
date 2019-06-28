@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user = User.new
   end
@@ -29,7 +29,6 @@ class UsersController < ApplicationController
    end
 
    # If: any empty fields => load /signup again. Else: Create the user with params, assign session[:user_id] to user, load /users #
-   # If: unable to save username || email to database, display error message, reload signup page
    post '/signup' do
       if logged_in?
         flash[:notice] = "You were already logged in. Here are your patterns."
@@ -40,12 +39,12 @@ class UsersController < ApplicationController
       else
         @user = User.create(username:params[:username], email:params[:email], password:params[:password])
         @user.save
-        session[:user_id] = @user.id #logged in. where is the sessions hash initially declared?
+        session[:user_id] = @user.id
         redirect to '/bills'
       end
     end
 
-   # If logged_in? redirect to /bills, otherwise redirect to /login #
+   # If logged_in? redirect to /bills, otherwise redirect to /login
    get '/login' do
      if logged_in?
        redirect '/bills'
@@ -61,7 +60,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/bills'
     else
-      #flash[:message] = { "Error: ":"You username and/or password do not match our records."} # Keep this ambiguous for security purposes #
       redirect '/login'
     end
   end
@@ -81,7 +79,6 @@ class UsersController < ApplicationController
      if logged_in?
        erb :'/users/index.html'
      else
-       #session[:flash] = @user.errors.messages
        redirect '/login'
      end
    end
