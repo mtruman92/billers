@@ -33,6 +33,7 @@ class BillsController < ApplicationController
         @bill.auto_pay = params[:auto_pay]
         @bill.category = params[:category]
         @bill.repeat = params[:repeat]
+        @bill.paid = params[:paid]
         @bill.user_id = current_user.id
         @bill.save
         redirect "/bills/#{@bill.id}"
@@ -69,11 +70,11 @@ class BillsController < ApplicationController
 
 
     # If logged_in? && bill has a name, update the name + attributes, redirect to that bill page. Else: Reload edit form #
-    patch "/bills/:id" do
+    patch "/bills/:id" do 
       set_bill
       if logged_in? && @bill.user_id == current_user
-        @bill.update(params[ @bill.bill_name]) # Mass update the bill attributes <%= @bill.bill_name%>
-        @bill.save
+        @bill.update([:bill]) # Mass update the bill attributes <%= @bill.bill_name%>
+        @bill.save  
        
         redirect '/bills/show.html'
         

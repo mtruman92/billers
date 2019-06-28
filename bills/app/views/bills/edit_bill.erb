@@ -15,12 +15,13 @@
                     </div>
 
                   <div class="form-bottom">
-                    <form role="form" action="/bills/<%= @bill.id%>" method="post" class="signup-form">
+                    <form role="form" action="/bills/<%=@bill.id%>" method="post" class="signup-form">
                       <input id="hidden" type="hidden" name="_method" value="PATCH">
+                      
 
                       <div class="form-group">
                         <label class="sr-only" for="form-description">Bill Name</label>
-                        <input type="text" name="description" placeholder="Bill Name..." class="form-description form-control" id="form-description" value="<%= @bill.bill_name%>">
+                        <input type="text" name="bill_name" placeholder="Bill Name..." class="form-description form-control" id="form-bill_name" value="<%= @bill.bill_name%>">
                       </div>
 
                       <div class="form-group">
