@@ -15,24 +15,65 @@
                     </div>
 
                   <div class="form-bottom">
-                    <form role="form" action="/bills/<%=@bill.id%>" method="post" class="signup-form">
+                    <form role="form" action="/bills/<%= @bill.id%>" method="post" class="signup-form">
                       <input id="hidden" type="hidden" name="_method" value="PATCH">
-                      
 
                       <div class="form-group">
                         <label class="sr-only" for="form-description">Bill Name</label>
-                        <input type="text" name="bill_name" placeholder="Bill Name..." class="form-description form-control" id="form-bill_name" value="<%= @bill.bill_name%>">
+                        <input type="text" name="bill[bill_name]" placeholder="Bill Name..." class="form-description form-control" id="form-description" value="<%= @bill.bill_name%>">
                       </div>
 
                       <div class="form-group">
                         <label class="sr-only" for="form-amount">Bill Amount</label>
-                        <input type="text" name="amount" placeholder="Bill Amount..." class="form-amount form-control" id="form-amount" value="<%= @bill.bill_amount%>">
+                        <input type="text" name="bill[bill_amount]" placeholder="Bill Amount..." class="form-amount form-control" id="form-amount" value="<%= @bill.bill_amount%>">
                       </div>
 
                       <div class="form-group">
                         <label class="sr-only" for="date">Due Date</label>
-                        <input class="form-date" type="date" name="date" placeholder="YYYY-MM-DD" value="<%= @bill.due_date%>" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Enter a date in this formart YYYY-MM-DD"/>
+                        <input class="form-date" type="date" name="bill[due_date]" placeholder="YYYY-MM-DD" value="<%= @bill.due_date%>" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Enter a date in this formart YYYY-MM-DD"/>
                       </div>
+
+
+                      <div class="form-group">
+                       <label class="switch" for="autopay">Autopay</label>
+                        <input type="checkbox" name="auto_pay">
+                        <span class="slider round"></span>
+                      </div>
+
+                      <div class="form-group">
+                        Category: <select id="category" name="category" value="<%= @bill.category%>" class="form-control">
+                          <option>Please Select</option>
+                          <option>Auto</option>
+                          <option>Cable</option>
+                          <option>Cell Phone</option>
+                          <option>Childcare</option>
+                          <option>Credit Card</option>
+                          <option>Education</option>
+                          <option>Electric</option>
+                          <option>Entertainment</option>
+                          <option>Gas</option>
+                          <option>Gifts</option>
+                          <option>Home</option>
+                          <option>Insurance</option>
+                          <option>Medical</option>
+                          <option>Mortgage</option>
+                          <option>Parking</option>
+                          <option>Pets</option>
+                          <option>Rent</option>
+                          <option>Security</option>
+                          <option>Tax</option>
+                          <option>Telephone</option>
+                          <option>Transportation</option>
+                          <option>Water</option>
+                          <option>Other</option>
+                        </select> </div>
+
+
+                            <div class="form-group">
+                             <label class="switch" for="paid">Paid</label>
+                              <input type="checkbox" name="paid">
+                              <span class="slider round"></span>
+                            </div>
 
                       <div class="form-group">
                         <label  style="color: white; -webkit-font-smoothing: antialiased !important;" for="category">Category</label>

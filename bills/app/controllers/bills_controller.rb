@@ -1,12 +1,10 @@
 class BillsController < ApplicationController
 
 
-
     # If: logged_in? @user = current_user, load users bills. Else: redirect /login #
     get '/bills' do
       if logged_in? && current_user
-        @user = current_user
-        @bill = Bill.all
+        @bills = current_user.bills
         erb :'/bills/index.html'
       else
         redirect '/login'
@@ -70,14 +68,13 @@ class BillsController < ApplicationController
 
 
     # If logged_in? && bill has a name, update the name + attributes, redirect to that bill page. Else: Reload edit form #
-    patch "/bills/:id" do 
-      set_bill
-      if logged_in? && @bill.user_id == current_user
-        @bill.update([:bill]) # Mass update the bill attributes <%= @bill.bill_name%>
-        @bill.save  
-       
-        redirect '/bills/show.html'
-        
+    patch "/bills/:id" do
+      @bill = set_bill
+      if logged_in? && @bill.user == current_user
+        @bill.update(params[:bill]) # Mass update the bill attributes <%= @bill.bill_name%>
+
+        redirect '/bills'
+
       else
         if logged_in?
           #flash[:message] = @user.errors.messages
@@ -87,14 +84,14 @@ class BillsController < ApplicationController
         end
       end
      end
-    
+
 
     # Delete bill if logged_in? and current_user is the creator. Otherwise, load bill index page. Else: reload /login #
     delete "/bills/:id/delete" do
       if logged_in?
-        set_bill
-        if @bill.user_id == current_user.id
-          @bill.delete
+        @bill = set_bill
+        if @bill.user == current_user
+          @bill.destroy
           redirect '/bills'
         else
           redirect '/bills'
@@ -107,7 +104,7 @@ class BillsController < ApplicationController
 
 
     def set_bill
-      @bill = Bill.find_by_id(params[:id])
+      Bill.find_by_id(params[:id])
     end
 
 end

@@ -1,6 +1,48 @@
 <h1>Welcome, <%= current_user.username if current_user %> </h1>
 
+<h2>Here are your recently saved bills:</h2>
 
 <a href="/bills/new">Add A New bill</a>
 <br>
 <br>
+
+
+<% @bills.each do |bill| %>
+    <h4><a href="/bills/<%=bill.id%>"><%= bill.bill_name %></a></h4>
+    <p>
+      <%= bill.bill_name %>
+      | <%= bill.bill_amount %>,
+        <%= bill.due_date %>,
+        <%= bill.auto_pay %>
+        <%= bill.category %>
+        <%= bill.repeat %>
+        <%= bill.paid %>
+    </p>
+<% end %>
+
+<table id="customers">
+  <tr>
+    <th>Bill Name</th>
+    <th>Bill Amount</th>
+    <th>Due Date</th>
+    <th>Autopay?</th>
+    <th>Category</th>
+    <th>Repeat</th>
+    <th>Paid?</th>
+    <th>Edit Bill</th>
+  </tr>
+  <tr>
+    <% @bills.each do |bill| %>
+        <h4><a href="/bills/<%=bill.id%>"><%= bill.bill_name %></a></h4>
+          <p>
+    <td><%= bill.bill_name %></td>
+    <td><%= bill.bill_amount %></td>
+    <td><%= bill.due_date %></td>
+    <td><%= bill.auto_pay ? "on" : "off" %></td>
+    <td><%= bill.category%></td> 
+    <td><%= bill.repeat %></td>
+    <td><%= bill.paid ? 'yes' : 'no' %></td>
+    <td><a href="/bills/<%=bill.id%>/edit">Edit<span class="glyphicon glyphicon-pencil"></span></a></td>
+  </tr>
+<% end %>
+</table>

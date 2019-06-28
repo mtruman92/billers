@@ -25,7 +25,7 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
 
 
 
-  <p>Category: <select id="category" name="category_id" class="form-control">
+  <p>Category: <select id="category" name="category" class="form-control">
       <option>Please Select</option>
       <option>Auto</option>
       <option>Cable</option>
@@ -73,8 +73,10 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
 
 </p>
 
-      Paid: <input type="checkbox" name="paid" id="checkboxes-0" value="Yes"> </p>
-
+<p> Paid: <label class="switch">
+  <input type="checkbox" name="paid">
+  <span class="slider round"></span>
+</label> </p>
 
 
  <button type="submit" class="btn btn-primary btn-block btn-large">Add Bill</button>

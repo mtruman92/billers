@@ -1,5 +1,5 @@
 <form action="/bills/<%= @bill.id %>" method="post">
- 
+
   <div class="input-container"> <font color="black">
 Bill Name:  <input class="input-field" type="text" placeholder="Bill Name" id= "billname" name="bill_name">
   </div>
@@ -13,7 +13,8 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
   </div>
 
 
-  <p>Category: <select id="category" name="category_id" class="form-control">
+
+  <p>Category: <select id="category" name="category"  value="<%= @bill.category%>" class="form-control">
       <option>Please Select</option>
       <option>Auto</option>
       <option>Cable</option>
@@ -62,6 +63,6 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
 </p>
 
       Paid: <input type="checkbox" name="paid" id="checkboxes-0" value="Yes"> </p>
-      
+
        <input type="submit" value="Update">
 </form>
