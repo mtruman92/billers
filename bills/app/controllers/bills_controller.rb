@@ -15,7 +15,7 @@ class BillsController < ApplicationController
     get '/bills/new' do
       if logged_in?
         @user = current_user
-        erb :'/bills/new.html'
+        erb :'/bills/create_bill'
       else
         redirect '/login'
       end
@@ -46,7 +46,7 @@ class BillsController < ApplicationController
     get "/bills/:id" do
       if logged_in?
         set_bill
-        erb :"/bills/show.html"
+        erb :"/bills/edit"
       else
         redirect '/login'
       end

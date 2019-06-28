@@ -86,34 +86,33 @@ class UsersController < ApplicationController
      end
    end
 
-
   # lets an user edit info only if logged in
   get '/users/:id/edit' do
     if logged_in?
-        erb :'/users/edit.html'
+        erb :'users/edit_user'
     else
-      redirect_if_not_logged_in
+      redirect '/login'
     end
   end
 
   # does not let a user edit with blank content
   patch '/users/:id' do
-
+    if !params[:username].empty?  && !params[:password].empty?
       @user = User.find(params[:id])
       @user.update(username:params[:username], password:params[:password])
-		redirect to "/logout"
-
-
+      redirect to "/users/current_user"
+    else
+      redirect to "/users/#{params[:id]}/edit"
+    end
   end
 
 
-
   # displays user info if logged in
-  get '/users/:id' do
+   get '/users/:id' do
     if logged_in?
-      erb :'users/login'
+      erb :'users/show'
     else
-      redirect_if_not_logged_in
+      redirect '/login'
     end
   end
 
@@ -126,7 +125,5 @@ class UsersController < ApplicationController
       redirect_if_not_logged_in
     end
   end
-
-
 
  end

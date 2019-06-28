@@ -1,4 +1,14 @@
-<form action="/bills/<%= @bill.id %>" method="post">
+<h1 class="text-center">Welcome to Bill Tracker</h1>
+
+<div class="lfloat _ohe">  <img style="-webkit-user-select: none;" src="https://www.freelogodesign.org/file/app/client/thumb/3572788b-93f9-4fbc-a179-add3c25c09b3_200x200.png?1560994314633">;</div>
+
+<!-- Insert Your Form Below -->
+
+  <form action="/bills" method="POST">
+
+<div class="signup">
+  <h1>Create a Bill</h1>
+
 
   <div class="input-container"> <font color="black">
 Bill Name:  <input class="input-field" type="text" placeholder="Bill Name" id= "billname" name="bill_name">
@@ -14,7 +24,8 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
 
 
 
-  <p>Category: <select id="category" name="category"  value="<%= @bill.category%>" class="form-control">
+
+  <p>Category: <select id="category" name="category" class="form-control">
       <option>Please Select</option>
       <option>Auto</option>
       <option>Cable</option>
@@ -62,7 +73,19 @@ Due Date: <input class="input-field" type="date" placeholder="Due Date" id= "due
 
 </p>
 
-      Paid: <input type="checkbox" name="paid" id="checkboxes-0" value="Yes"> </p>
+<p> Paid: <label class="switch">
+  <input type="checkbox" name="paid">
+  <span class="slider round"></span>
+</label> </p>
 
-       <input type="submit" value="Update">
+
+ <button type="submit" class="btn btn-primary btn-block btn-large">Add Bill</button>
+
+
 </form>
+
+
+
+
+</body>
+</html>

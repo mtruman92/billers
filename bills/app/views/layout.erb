@@ -15,10 +15,10 @@
                     <ul class="nav navbar-nav">
                         <% if logged_in? %>
                             <li><a href="/" class="navbar-brand">Bills Homepage</a></li>
-                            <li><a href="/bills/show.html">View Bills</a></li>
+                            <li><a href="/bills">View Bills</a></li>
                             <li><a href="/users/<%= current_user.username %>/edit"">My Profile</a></li>
                             <li><a href="/bills/new">New Bills</a></li>
-                            <li><a href="/bills/edit_bill">Edit Bills</a></li>
+                            <li><a href="/bills/edit">Edit Bills</a></li>
                             <li><a href="/logout">Logout</a></li>
                         <% else %>
                             <li><a href="/login">Login</a></li>
